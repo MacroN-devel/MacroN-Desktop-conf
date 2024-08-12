@@ -1,0 +1,83 @@
+#:schema https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json
+
+version = 2
+final_space = true
+console_title_template = '{{ .Shell }} in {{ .Folder }}'
+
+[palette]
+  color1 = "#fbf6e2"
+  color2 = "#ecceae"
+  color3 = "#e68369"
+  color4 = '#179BAE'
+  color5 = '#B5C18E'
+  err = '#EF5A6F'
+
+
+
+[[blocks]]
+  type = 'rprompt'
+  [[blocks.segments]]
+    type = 'executiontime'
+    background = 'transparent'
+    foreground = 'p:color5'
+    template = '{󱖑 {{.FormattedMs}}}'
+    [blocks.segments.properties]
+      threshold = 500
+
+
+
+[[blocks]]
+  type = 'prompt'
+  alignment = 'left'
+  newline = true
+  [[blocks.segments]]
+    type = 'path'
+    style = 'plain'
+    background = 'transparent'
+    foreground = 'p:color2'
+    template = '<p:color1> {{.Path}} <p:color1>'
+    [blocks.segments.properties]
+      folder_icon = '  '
+      folder_separator_template = '<p:color3>  </>'
+      home_icon = ' '
+      style = 'agnoster'
+
+  [[blocks.segments]]
+    type = 'rust'
+    style = 'plain'
+    background = 'transparent'
+    foreground = 'p:color5'
+    template = '[ {{ if .Error }}<p:err>{{ .Error }}</>{{ else }}{{ .Full }}{{ end }}]'
+
+  [[blocks.segments]]
+    type = 'java'
+    style = 'plain'
+    background = 'transparent'
+    foreground = 'p:color5'
+    template = '[ {{ if .Error }}<p:err>{{ .Error }}</>{{ else }}{{ .Full }}{{ end }}]'
+
+  [[blocks.segments]]
+    type = 'text'
+    style = 'plain'
+    foreground_templates = [
+      "{{if gt .Code 0}}p:err{{end}}",
+      "{{if eq .Code 0}}p:color4{{end}}",
+    ]
+    background = 'transparent'
+    template = '❯'
+
+
+
+[transient_prompt]
+  foreground_templates = [
+    "{{if gt .Code 0}}p:err{{end}}",
+    "{{if eq .Code 0}}p:color4{{end}}",
+  ]
+  background = 'transparent'
+  template = '❯ '
+
+[secondary_prompt]
+  foreground = 'p:color5'
+  background = 'transparent'
+  template = '❯❯ '
+
