@@ -16,44 +16,52 @@ console_title_template = '{{ .Shell }} in {{ .Folder }}'
   type = 'prompt'
   alignment = 'left'
   newline = true
+
   [[blocks.segments]]
     type = 'text'
     style = 'plain'
     background = 'transparent'
     foreground = 'blue'
-    template = '┌'
+    template = '┌<p:color1>【</>'
 
   [[blocks.segments]]
     type = 'os'
     style = 'plain'
     background = 'transparent'
     foreground = 'p:color1'
-    template = '[ linux]'
+    template = '「 linux」'
 
   [[blocks.segments]]
     type = 'shell'
     style = 'plain'
     background = 'transparent'
     foreground = 'p:color2'
-    template = '[ {{.Name}}]'
+    template = '「 {{.Name}}」'
 
   [[blocks.segments]]
     type = 'session'
     style = 'plain'
     background = 'transparent'
     foreground = 'p:color3'
-    template = '[ {{.UserName}} @ 󰍹 {{.HostName}}]'
+    template = '「 {{.UserName}} @ 󰍹 {{.HostName}}」'
 
   [[blocks.segments]]
     type = 'git'
     style = 'plain'
     background = 'transparent'
     foreground = 'p:color4'
-    template = '[{{ .HEAD }}{{ if or (.Working.Changed) (.Staging.Changed) }}*{{ end }} <cyan>{{ if gt .Behind 0 }}⇣{{ end }}{{ if gt .Ahead 0 }}⇡{{ end }}</>]'
+    template = '「{{ .HEAD }}{{ if or (.Working.Changed) (.Staging.Changed) }}*{{ end }} <cyan>{{ if gt .Behind 0 }}⇣{{ end }}{{ if gt .Ahead 0 }}⇡{{ end }}</>」'
     [blocks.segments.properties]
       branch_icon = ' 󰘬 '
       commit_icon = ' 󰜜 '
       fetch_status = true
+
+  [[blocks.segments]]
+    type = 'text'
+    style = 'plain'
+    background = 'plain'
+    foreground = 'p:color1'
+    template = ' 】'
 
 
 
@@ -63,7 +71,7 @@ console_title_template = '{{ .Shell }} in {{ .Folder }}'
     type = 'executiontime'
     background = 'transparent'
     foreground = 'p:color5'
-    template = '{󱖑 {{.FormattedMs}}}'
+    template = '󱖑 {{.FormattedMs}}'
     [blocks.segments.properties]
       threshold = 500
 
@@ -78,7 +86,7 @@ console_title_template = '{{ .Shell }} in {{ .Folder }}'
     style = 'plain'
     background = 'transparent'
     foreground = 'p:color2'
-    template = '<blue>└</><p:color1>[</> {{.Path}} <p:color1>]'
+    template = '<blue>└</><p:color1>【</> {{.Path}} <p:color1>】</>'
     [blocks.segments.properties]
       folder_icon = '  '
       folder_separator_template = '<p:color3>  </>'
@@ -90,14 +98,14 @@ console_title_template = '{{ .Shell }} in {{ .Folder }}'
     style = 'plain'
     background = 'transparent'
     foreground = 'p:color5'
-    template = '[ {{ if .Error }}<p:err>{{ .Error }}</>{{ else }}{{ .Full }}{{ end }}]'
+    template = '<p:color1>【</>  {{ if .Error }}<p:err>{{ .Error }}</>{{ else }}{{ .Full }}{{ end }} <p:color1>】</>'
 
   [[blocks.segments]]
     type = 'java'
     style = 'plain'
     background = 'transparent'
     foreground = 'p:color5'
-    template = '[ {{ if .Error }}<p:err>{{ .Error }}</>{{ else }}{{ .Full }}{{ end }}]'
+    template = '<p:color1>【</>  {{ if .Error }}<p:err>{{ .Error }}</>{{ else }}{{ .Full }}{{ end }} <p:color1>】</>'
 
 
 
